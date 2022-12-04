@@ -8,18 +8,19 @@ class Solution {
         // 이때 x도 포함해서 카운팅을 한다.
         for(char c:s.toCharArray())
         {
-            if(x=='0') x=c;
+            if(x=='0'){
+                answer++;
+                x=c;
+            }
             if(x==c) cntT++;
             else cntF++;
             
             if(cntT==cntF)
             {
-                answer++;
                 cntT = cntF =0;
                 x ='0';
             }
         }
-        if(cntT!=cntF)answer++;
         return answer;
     }
 }
