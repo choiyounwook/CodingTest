@@ -5,11 +5,9 @@ class Solution {
         for (int i = 0; i < arr.length; i++) {
 			if(arr[i]>='A'&&arr[i]<='Z')
 			{
-				arr[i]+=n;
-				if(arr[i]>'Z') arr[i]-=26;
+				arr[i]= (char) ((arr[i]-'A'+n)%26+'A');
 			}else if(arr[i]>='a'&&arr[i]<='z'){
-				arr[i]+=n;
-				if(arr[i]>'z') arr[i]-=26;
+				arr[i]=(char) ((arr[i]-'a'+n)%26+'a');
 			}
 			answer+=arr[i];
 		}
