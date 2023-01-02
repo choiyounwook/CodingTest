@@ -1,7 +1,7 @@
 import java.util.*;
 class Solution {
     public int solution(int k, int[] tangerine) {
-        int answer = 0;
+         int answer = 0;
         Map<Integer,Integer> map = new HashMap<>();
         for (int i = 0; i < tangerine.length; i++) {
 			map.put(tangerine[i], map.getOrDefault(tangerine[i], 0)+1);
@@ -9,14 +9,7 @@ class Solution {
        
         List<Integer> list = new ArrayList<>(map.keySet());
         
-        list.sort(new Comparator<Integer>() {
-
-			@Override
-			public int compare(Integer o1, Integer o2) {
-				// TODO Auto-generated method stub
-				return map.get(o2).compareTo(map.get(o1));
-			}
-		});
+        list.sort((o1,o2)->map.get(o2)-map.get(o1));
         for(int key : list) {
         	
         	answer++;
