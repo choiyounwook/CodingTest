@@ -1,20 +1,21 @@
 class Solution {
-static int max = -1;
+	static int max = -1;
 	static int[] answer = {-1};
-	static int[] lionInfo;
-	public static void dfs(int n, int[] apeachInfo) {
+	static int[] lion;
+	static int[] apeach;
+	public static void dfs(int n) {
 		if(n==0)
 		{// 계산
 			int apeachScore=0; 
 			int lionScore=0;
 			// 선수들의 점수 계산
 			for (int i = 0; i <=10; i++) {
-				if(!(apeachInfo[i]==0&&lionInfo[i]==0))
+				if(!(apeach[i]==0&&lion[i]==0))
 				{
-					if(apeachInfo[i]>=lionInfo[i])
+					if(apeach[i]>=lion[i])
 					{
 						apeachScore+=10-i;
-					}else if(apeachInfo[i]<lionInfo[i]) {
+					}else if(apeach[i]<lion[i]) {
 						lionScore+=10-i;
 					}
 				}
@@ -25,17 +26,17 @@ static int max = -1;
 			if(lionScore>apeachScore&&num>=max)
 			{
 				max = num;
-				answer = lionInfo.clone();
+				answer = lion.clone();
 				
 			}
 			return;
 		}
 		// 0 ~ 10 점까지 계산
 		// 시간 초과 방지를 위한 가지치기 필요
-		for (int i = 0; i <=10&&lionInfo[i]<=apeachInfo[i]; i++) {
-			lionInfo[i]++;
-			dfs(n-1, apeachInfo);
-			lionInfo[i]--;
+		for (int i = 0; i <=10&&lion[i]<=apeach[i]; i++) {
+			lion[i]++;
+			dfs(n-1);
+			lion[i]--;
 			
 		}
 		
@@ -54,8 +55,9 @@ static int max = -1;
 		 * 
 		 * 완전 탐색으로 모든 경우 찾기 + 가지치기
 		 * */
-		lionInfo = new int[11];
-		dfs(n, info );
+		lion = new int[11];
+		apeach=info;
+		dfs(n);
 
         return answer;
     }
