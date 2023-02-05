@@ -1,5 +1,5 @@
 class Solution {
-    static int answer = 0;
+   static int answer = 0;
 	static int[][] dungeon;
 	public static int solution(int k, int[][] dungeons) {
         /**
@@ -8,24 +8,17 @@ class Solution {
          * 1 : 소모 피로도 (던전 탐험 후 소모되는 피로도)
          * */
 		dungeon = dungeons;
-		dfs(k, new boolean[dungeons.length], 0,0);
+		dfs(k, new boolean[dungeons.length], 0);
         return answer;
     }
-	public static void dfs(int k, boolean check[], int cnt, int ans) {
-		if(check.length<=cnt)
-		{
-			answer= Math.max(answer, ans);
-			return;
-		}else {
+	public static void dfs(int k, boolean check[], int ans) {
+		
 			for (int i = 0; i < check.length; i++) {
-				if(check[i]) continue;
+				if(check[i]||dungeon[i][0]>k) continue;
 				check[i]= true;
-				if(dungeon[i][0]<=k)
-					dfs(k-dungeon[i][1], check, cnt+1, ans+1);
-				else
-					dfs(k, check, cnt+1, ans);
+				dfs(k-dungeon[i][1], check, ans+1);
 				check[i]= false;
 			}
-		}
+			answer= Math.max(answer, ans);
 	}
 }
