@@ -23,6 +23,7 @@ class Solution {
 			answer[map[x][y]]++;
 			return;
 		}
+        
 		backtracking(x+size/2,y,size/2);
 		backtracking(x,y,size/2);
 		backtracking(x,y+size/2,size/2);
