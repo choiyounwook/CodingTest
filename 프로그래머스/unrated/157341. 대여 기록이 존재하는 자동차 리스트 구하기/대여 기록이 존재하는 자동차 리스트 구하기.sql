@@ -1,0 +1,8 @@
+-- 코드를 입력하세요
+SELECT C.CAR_ID
+from CAR_RENTAL_COMPANY_CAR C
+inner join CAR_RENTAL_COMPANY_RENTAL_HISTORY  H
+on C.CAR_ID =H.CAR_ID
+where C.CAR_TYPE LIKE '세단' AND MONTH(START_DATE) = 10
+group by C.CAR_ID
+order by C.CAR_ID desc
