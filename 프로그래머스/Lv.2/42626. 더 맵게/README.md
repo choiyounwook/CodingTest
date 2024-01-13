@@ -1,6 +1,6 @@
 # [level Lv.2] 더 맵게 - 42626 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42626?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42626) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 1월 6일 14:42:55
+2024년 1월 6일 14:43:38
 
 ### 문제 설명
 
