@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Stack;
+import java.util.StringTokenizer;
 
 public class Main {
 
@@ -11,26 +12,28 @@ public class Main {
       int N = Integer.parseInt(br.readLine());
       int[] tops = new int[N];
 
-      String[] inputs = br.readLine().split(" ");
+      StringTokenizer st = new StringTokenizer(br.readLine());
       for (int i = 0; i < N; i++) {
-         tops[i] = Integer.parseInt(inputs[i]);
+         tops[i] = Integer.parseInt(st.nextToken());
       }
 
       Stack<Integer> stack = new Stack<>();
+      StringBuilder sb = new StringBuilder();
       for (int i = 0; i < N; i++) {
          while (!stack.isEmpty()) {
             if (tops[stack.peek()] >= tops[i]) {
-               System.out.print((stack.peek() + 1) + " ");
+               sb.append(stack.peek() + 1).append(" ");
                break;
             } else {
                stack.pop();
             }
          }
          if (stack.isEmpty()) {
-            System.out.print("0 ");
+            sb.append("0 ");
          }
          stack.push(i);
       }
+      System.out.println(sb.toString());
    }
 
 }
