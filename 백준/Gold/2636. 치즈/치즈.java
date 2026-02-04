@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
@@ -31,7 +31,7 @@ public class Main {
 		int time = 0;
 		while (totalCheese > 0) {
 			time++;
-			int cheeseLeft = checkCheese(n, m);
+			int cheeseLeft = totalCheese - meltCheese(n, m);
 			if (cheeseLeft == 0) {
 				break;
 			}
@@ -44,11 +44,13 @@ public class Main {
 
 	}
 
-	static int checkCheese(int n, int m) {
-		Queue<int[]> queue = new LinkedList<>();
-		queue.add(new int[] {0, 0});
-
+	static int meltCheese(int n, int m) {
 		boolean[][] visited = new boolean[n][m];
+		Queue<int[]> queue = new ArrayDeque<>();
+		int melted = 0;
+       
+		queue.add(new int[] {0, 0});
+		visited[0][0] = true;
 
 		while (!queue.isEmpty()) {
 			int[] pos = queue.poll();
@@ -61,17 +63,12 @@ public class Main {
 						queue.add(new int[] {newx, newy});
 					} else if (map[newx][newy] == 1) {
 						map[newx][newy] = 0;
+						melted++;
 					}
 				}
 			}
 		}
-		int total = 0;
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				if (map[i][j] == 1)
-					total++;
-			}
-		}
-		return total;
+
+		return melted;
 	}
 }
